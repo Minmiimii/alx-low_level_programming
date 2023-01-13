@@ -1,21 +1,22 @@
-a#include "lists.h"
+#include "lists.h"
 
 /**
- * get_dnodeint_at_index - Locates a node in a dlistint_t list.
- * @head: The head of the dlistint_t list.
- * @index: The node to locate.
+ * get_dnodeint_at_index - returns the nth node of dlistint_t linked list
+ * @head: head of the linked list
+ * @index: index of node to be returned
  *
- * Return: If the node does not exist - NULL.
- *         Otherwise - the address of the located node.
+ * Return: node, if it does not exist NULL
  */
 dlistint_t *get_dnodeint_at_index(dlistint_t *head, unsigned int index)
 {
-	for (; index != 0; index--)
-	{
-		if (head == NULL)
-			return (NULL);
-		head = head->next;
-	}
+	dlistint_t *tmp;
+	unsigned int i = 0;
 
-	return (head);
+	tmp = head;
+	while (tmp != NULL && (i < index))
+	{
+		tmp = tmp->next;
+		i++;
+	}
+	return (tmp);
 }
